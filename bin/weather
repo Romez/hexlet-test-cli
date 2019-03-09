@@ -5,8 +5,6 @@
 $autoloadPath = __DIR__ . '/../vendor/autoload.php';
 require_once $autoloadPath;
 
-$client = new \GuzzleHttp\Client(['base_uri' => 'https://www.metaweather.com']);
-
-$weather = new Php\Package\Weather($client);
+$weather = new Php\Package\Weather();
 
 var_dump($weather->getInfoByCity($argv[1]));

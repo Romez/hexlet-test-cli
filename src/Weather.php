@@ -8,14 +8,20 @@ class Weather
 {
     private $client;
 
-    public function __construct(Client $client)
+    public function __construct(Client $client = null)
     {
+        if (is_null($client)) {
+            $client = new Client(['base_uri' => 'https://www.metaweather.com']);
+        }
+
         $this->client = $client;
     }
 
     public function getInfoByCity(string $city): array
     {
-        $locationResp = $this->client->request('GET', 'api/location/search', ['query' => ['query' => $city]]);
+        $locationResp = $this->client->request('GET', 'api/location/search', ['
+            query' => ['query' => $city]
+        ]);
         $locationData = json_decode($locationResp->getBody()->getContents(), true);
         ['woeid' => $woeid] = $locationData[0];
 
