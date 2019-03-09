@@ -10,10 +10,8 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-echo 'what is your name?: ';
-$name = trim(fgets(STDIN));
+$client = new \GuzzleHttp\Client(['base_uri' => 'https://www.metaweather.com']);
 
-$user = new Php\Package\User($name);
+$weather = new Php\Package\Weather($client);
 
-var_dump($user);
-
+var_dump($weather->getInfoByCity($argv[1]));

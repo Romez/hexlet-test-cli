@@ -24,7 +24,8 @@
   "require": {
     "tightenco/collect": "^5.6",
     "nesbot/carbon": "^1.26",
-    "danielstjules/stringy": "^3.1"
+    "danielstjules/stringy": "^3.1",
+    "guzzlehttp/guzzle": "^6.3@dev"
   },
   "require-dev": {
     "symfony/var-dumper": "^4.0",
