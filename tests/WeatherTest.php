@@ -19,8 +19,8 @@ class WeatherTest extends TestCase
     {
         parent::setUp();
 
-        $this->weatherFixture = file_get_contents('./weather-fixture.json');
-        $this->locationFixture = file_get_contents('./location-fixture.json');
+        $this->weatherFixture = file_get_contents('./tests/fixtures/weather-fixture.json');
+        $this->locationFixture = file_get_contents('./tests/fixtures/location-fixture.json');
     }
 
     public function testGetInfoByCity()

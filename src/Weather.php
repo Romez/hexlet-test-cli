@@ -16,12 +16,12 @@ class Weather
     public function getInfoByCity(string $city): array
     {
         $locationResp = $this->client->request('GET', 'api/location/search', ['query' => ['query' => $city]]);
-
-        ['woeid' => $woeid] = json_decode($locationResp->getBody()->getContents(), true)[0];
+        $locationData = json_decode($locationResp->getBody()->getContents(), true);
+        ['woeid' => $woeid] = $locationData[0];
 
         $weatherResp = $this->client->request('GET', 'api/location/' . $woeid);
-
-        ['the_temp' => $temperature] = json_decode($weatherResp->getBody()->getContents(), true)['consolidated_weather'][0];
+        $weatherData = json_decode($weatherResp->getBody()->getContents(), true);
+        ['the_temp' => $temperature] = $weatherData['consolidated_weather'][0];
 
         return compact('temperature');
     }
